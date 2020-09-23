@@ -1,0 +1,2 @@
+# AS2_P2
+Segundo Parcial - ANALISIS DE SISTEMAS II
