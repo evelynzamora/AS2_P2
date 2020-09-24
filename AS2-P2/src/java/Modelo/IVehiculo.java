@@ -1,24 +1,22 @@
 package Modelo;
 
 public interface IVehiculo {
-    public int GetId();
-    public String GetTipoVehiculo();
-    public String GetPlaca();
-    public String GetNumero_Licencia();
-    public String GetMarca();
-    public String GetModelo();
-    public String GetColor();
-    public String GetVin();
-    public String GetCc();
-    public String GetTamaño_Rueda();
-    public void SetId(String id);
-    public void SetTipoVehiculo(String tipoVehiculo);
-    public void SetPlaca(String placa);
-    public void SetNumero_Licencia(String numero_Licencia);
-    public void SetMarca(String marca);
-    public void SetModelo(String modelo);
-    public void SetColor(String color);
-    public void SetVin(String vin);
-    public void SetCc(String cc);
-    public void SetTamaño_Rueda(String tamaño_rueda);
+    public int getId();
+    public String getTipoVehiculo();
+    public String getPlaca();
+    public String getMarca();
+    public String getModelo();
+    public String getColor();
+    public String getVin();
+    public String getCc();
+    public String getTamaño_Rueda();
+    public void setId(int id);
+    public void setTipoVehiculo(String tipoVehiculo);
+    public void setPlaca(String placa);
+    public void setMarca(String marca);
+    public void setModelo(String modelo);
+    public void setColor(String color);
+    public void setVin(String vin);
+    public void setCc(String cc);
+    public void setTamaño_Rueda(String tamaño_rueda);
 }
