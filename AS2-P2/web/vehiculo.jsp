@@ -15,6 +15,9 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <ul class="navbar-nav">
             <li class="nav-item">
+              <a class="nav-link" href="index.jsp">Inicio</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="vehiculo.jsp">Vehiculo CRUD</a>
             </li>
             <li class="nav-item">
@@ -28,7 +31,7 @@
 
     <div class="container">
         
-        <form action="#" method="post" class="form-group">
+        <form action="sr_Vehiculo" method="get" class="form-group">
             <label for="Tipo Vehiculo"><b>Tipo Vehiculo</b></label>
             <select name="drop_marca" id="drop_marca" class="form-control">
                 <option value='0'>--Seleccionar--</option>

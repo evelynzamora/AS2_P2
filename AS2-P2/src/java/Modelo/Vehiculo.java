@@ -1,13 +1,17 @@
 package Modelo;
 
 public class Vehiculo implements IVehiculo{
-    int id;
-    String tipoVehiculo, placa, marca, modelo, color, vin, cc, tamaño_Rueda;
+    String tipoVehiculo, placa, marca, modelo, color, vin, cc, tamaño_Rueda, id;
 
     public Vehiculo(){
     }
     
-    public Vehiculo(int id, String tipoVehiculo, String placa, String marca, String modelo, String color, String vin, String cc, String tamaño_Rueda) {
+    public Vehiculo(String id, String tipoVehiculo){
+        this.id = id;
+        this.tipoVehiculo = tipoVehiculo;
+    }
+    
+    public Vehiculo(String id, String tipoVehiculo, String placa, String marca, String modelo, String color, String vin, String cc, String tamaño_Rueda) {
         this.id = id;
         this.tipoVehiculo = tipoVehiculo;
         this.placa = placa;
@@ -20,12 +24,12 @@ public class Vehiculo implements IVehiculo{
     }
     
     @Override
-    public int getId() {
+    public String getId() {
         return id;
     }
     
     @Override
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     

@@ -1,7 +1,7 @@
 package Modelo;
 
 public interface IVehiculo {
-    public int getId();
+    public String getId();
     public String getTipoVehiculo();
     public String getPlaca();
     public String getMarca();
@@ -10,7 +10,7 @@ public interface IVehiculo {
     public String getVin();
     public String getCc();
     public String getTamaño_Rueda();
-    public void setId(int id);
+    public void setId(String id);
     public void setTipoVehiculo(String tipoVehiculo);
     public void setPlaca(String placa);
     public void setMarca(String marca);

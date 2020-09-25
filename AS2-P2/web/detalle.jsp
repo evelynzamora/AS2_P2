@@ -15,6 +15,9 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <ul class="navbar-nav">
             <li class="nav-item">
+              <a class="nav-link" href="index.jsp">Inicio</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="vehiculo.jsp">Vehiculo CRUD</a>
             </li>
             <li class="nav-item">
@@ -28,7 +31,7 @@
 
     <div class="container">
         
-        <form action="#" method="post" class="form-group">
+        <form action="sr_Detalle" method="get" class="form-group">
             
             <label for="lbl_id"><b>ID</b></label>
             <input type="text" name="txt_id" id="txt_id" class="form-control" readonly>
@@ -63,7 +66,7 @@
                         }
                         %>
                     </tbody>
-                </table>
+            </table>
             </form>
     </div>
 
