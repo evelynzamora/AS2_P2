@@ -46,7 +46,7 @@ public class VehiculoDAO implements IVehiculoDAO{
     }
 
     @Override
-    public int AgregarTipoVehiculo(Vehiculo vehiculo) {
+    public int AgregarTipoVehiculo(IVehiculo vehiculo) {
         int retorno = 0;
         try{
             PreparedStatement parametro;
@@ -57,7 +57,6 @@ public class VehiculoDAO implements IVehiculoDAO{
             parametro.setString(1, vehiculo.getTipoVehiculo());
             
             retorno = parametro.executeUpdate();
-            cn.cerrar_conexion();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             retorno = 0;
@@ -80,7 +79,6 @@ public class VehiculoDAO implements IVehiculoDAO{
             parametro.setString(2, vehiculo.getId());
             
             retorno = parametro.executeUpdate();
-            cn.cerrar_conexion();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             retorno = 0;
@@ -102,7 +100,6 @@ public class VehiculoDAO implements IVehiculoDAO{
             parametro.setString(1, vehiculo.getId());
             
             retorno = parametro.executeUpdate();
-            cn.cerrar_conexion();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             retorno = 0;
@@ -174,7 +171,6 @@ public class VehiculoDAO implements IVehiculoDAO{
             parametro.setString(8, vehiculo.getId());
             
             retorno = parametro.executeUpdate();
-            cn.cerrar_conexion();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             retorno = 0;
@@ -203,7 +199,6 @@ public class VehiculoDAO implements IVehiculoDAO{
             parametro.setString(8, vehiculo.getId());
             parametro.setString(9, vehiculo.getPlaca());
             retorno = parametro.executeUpdate();
-            cn.cerrar_conexion();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             retorno = 0;
@@ -225,7 +220,6 @@ public class VehiculoDAO implements IVehiculoDAO{
             parametro.setString(1, vehiculo.getPlaca());
             
             retorno = parametro.executeUpdate();
-            cn.cerrar_conexion();
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
             retorno = 0;

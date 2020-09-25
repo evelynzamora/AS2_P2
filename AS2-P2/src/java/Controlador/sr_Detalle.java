@@ -12,7 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 public class sr_Detalle extends HttpServlet {
     Vehiculo vehiculo;
     VehiculoDAO vehiculoDAO;
-    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         
         throws ServletException, IOException {
@@ -29,7 +37,7 @@ public class sr_Detalle extends HttpServlet {
             vehiculo = new Vehiculo(request.getParameter("txt_id"),request.getParameter("txt_tipo"));
             
             if("agregar".equals(request.getParameter("btn_agregar"))){
-                if(vehiculoDAO.AgregarTipoVehiculo(vehiculo) > 0){
+                if(vehiculo.AgregarTipoVehiculo() > 0){
                     response.sendRedirect("detalle.jsp");
                 }else{
                     out.println("<h1>Error.............</h1>");
@@ -38,7 +46,7 @@ public class sr_Detalle extends HttpServlet {
             } 
             
             if("modificar".equals(request.getParameter("btn_modificar"))){
-                if(vehiculoDAO.ModificarTipoVehiculo(vehiculo)> 0){
+                if(vehiculo.ModificarTipoVehiculo() > 0){
                     response.sendRedirect("detalle.jsp");
                 }else{
                     out.println("<h1>Error.............</h1>");
@@ -47,7 +55,7 @@ public class sr_Detalle extends HttpServlet {
             }   
             
             if("eliminar".equals(request.getParameter("btn_eliminar"))){
-                if(vehiculoDAO.EliminarTipoVehiculo(vehiculo) > 0){
+                if(vehiculo.EliminarTipoVehiculo() > 0){
                     response.sendRedirect("detalle.jsp");
                 }else{
                     out.println("<h1>Error.............</h1>");
@@ -61,19 +69,39 @@ public class sr_Detalle extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";

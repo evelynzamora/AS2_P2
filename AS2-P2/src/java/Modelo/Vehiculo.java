@@ -1,7 +1,14 @@
 package Modelo;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import javax.swing.table.DefaultTableModel;
+
 public class Vehiculo implements IVehiculo{
     String tipoVehiculo, placa, marca, modelo, color, vin, cc, tamaño_Rueda, id;
+    Conexion cn;
 
     public Vehiculo(){
     }
@@ -98,5 +105,140 @@ public class Vehiculo implements IVehiculo{
         this.tamaño_Rueda = tamaño_Rueda;
     }
     
+    //ESTO NO ESTABA PLANEADO, ES UN ACTO DE DESESPERACION Y HACE VER FEO EL CODIGO PERO FUNCIONA
     
+    public int AgregarTipoVehiculo() {
+        int retorno = 0;
+        try{
+            PreparedStatement parametro;
+            cn = new Conexion();
+            String query = "INSERT INTO Vehiculo(TipoVehiculo) VALUES (?);";
+            cn.abrir_conexion();
+            parametro = (PreparedStatement)cn.conexionBD.prepareStatement(query);
+            parametro.setString(1, getTipoVehiculo());
+            
+            retorno = parametro.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+            retorno = 0;
+        }finally{
+            cn.cerrar_conexion();            
+        }
+        return retorno;
+    }
+
+    public int ModificarTipoVehiculo() {
+        int retorno = 0;
+        try{
+            PreparedStatement parametro;
+            cn = new Conexion();
+            String query = "UPDATE Vehiculo set TipoVehiculo=? WHERE IdVehiculo = ?;";
+            cn.abrir_conexion();
+            parametro = (PreparedStatement)cn.conexionBD.prepareStatement(query);
+            parametro.setString(1, getTipoVehiculo());
+            parametro.setString(2, getId());
+            
+            retorno = parametro.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+            retorno = 0;
+        }finally{
+            cn.cerrar_conexion();            
+        }
+        return retorno;
+    }
+
+    public int EliminarTipoVehiculo() {
+        int retorno = 0;
+        try{
+            PreparedStatement parametro;
+            cn = new Conexion();
+            String query = "DELETE FROM Vehiculo WHERE IdVehiculo = ?;";
+            cn.abrir_conexion();
+            parametro = (PreparedStatement)cn.conexionBD.prepareStatement(query);
+            parametro.setString(1, getId());
+            
+            retorno = parametro.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+            retorno = 0;
+        }finally{
+            cn.cerrar_conexion();
+        }
+        return retorno;
+    }
+
+    public int AgregarVehiculo() {
+        int retorno = 0;
+        try{
+            PreparedStatement parametro;
+            cn = new Conexion();
+            String query = "INSERT INTO Vehiculo_Detalle(Placa,Marca,Modelo,Color,VIN,Cc,Tamaño_Rueda,IdVehiculo) VALUES (?,?,?,?,?,?,?,?);";
+            cn.abrir_conexion();
+            parametro = (PreparedStatement)cn.conexionBD.prepareStatement(query);
+            parametro.setString(1, getPlaca());
+            parametro.setString(2, getMarca());
+            parametro.setString(3, getModelo());
+            parametro.setString(4, getColor());
+            parametro.setString(5, getVin());
+            parametro.setString(6, getCc());
+            parametro.setString(7, getTamaño_Rueda());
+            parametro.setString(8, getTipoVehiculo());
+            
+            retorno = parametro.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+            retorno = 0;
+        }finally{
+            cn.cerrar_conexion();
+        }
+        return retorno;
+    }
+
+    public int ModificarVehiculo() {
+        int retorno = 0;
+        try{
+            PreparedStatement parametro;
+            cn = new Conexion();
+            String query = "UPDATE Vehiculo_Detalle SET Placa=?,Marca=?,Modelo=?,Color=?,VIN=?,Cc=?,Tamaño_Rueda=?,IdVehiculo=? WHERE Placa=?;";
+            cn.abrir_conexion();
+            parametro = (PreparedStatement)cn.conexionBD.prepareStatement(query);
+            parametro.setString(1, getPlaca());
+            parametro.setString(2, getMarca());
+            parametro.setString(3, getModelo());
+            parametro.setString(4, getColor());
+            parametro.setString(5, getVin());
+            parametro.setString(6, getCc());
+            parametro.setString(7, getTamaño_Rueda());
+            parametro.setString(8, getTipoVehiculo());
+            parametro.setString(9, getPlaca());
+            retorno = parametro.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+            retorno = 0;
+        }finally{
+            cn.cerrar_conexion();
+        }
+        return retorno;
+    }
+
+    public int EliminarVehiculo() {
+        int retorno = 0;
+        try{
+            PreparedStatement parametro;
+            cn = new Conexion();
+            String query = "DELETE FROM Vehiculo_Detalle WHERE Placa=?;";
+            cn.abrir_conexion();
+            parametro = (PreparedStatement)cn.conexionBD.prepareStatement(query);
+            parametro.setString(1, getPlaca());
+            
+            retorno = parametro.executeUpdate();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+            retorno = 0;
+        }finally{
+            cn.cerrar_conexion();
+        }
+        return retorno;
+    }
 }

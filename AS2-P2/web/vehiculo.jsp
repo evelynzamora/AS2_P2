@@ -32,8 +32,9 @@
     <div class="container">
         
         <form action="sr_Vehiculo" method="get" class="form-group">
+            
             <label for="Tipo Vehiculo"><b>Tipo Vehiculo</b></label>
-            <select name="drop_marca" id="drop_marca" class="form-control">
+            <select name="drop_tipo" id="drop_tipo" class="form-control">
                 <option value='0'>--Seleccionar--</option>
                 <%
                     try{
